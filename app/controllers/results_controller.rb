@@ -19,7 +19,8 @@ class ResultsController < ApplicationController
     @num_period = 12 * @years
     @payment_upper = @rate * @pv
     @payment_lower = 1- ((1+@rate) ** (@num_period * (-1)))
-    @payment = @payment_upper / @payment_lower
+    @payment = (@payment_upper / @payment_lower)
+    @payment_curr = @payment.round
     
     render ({ :template => "results_templates/payment"})
   end
